@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/clickcounterappghpages/static/css/main.14f3a2db.css",
-    "main.js": "/clickcounterappghpages/static/js/main.bc782dd0.js",
+    "main.js": "/clickcounterappghpages/static/js/main.c8c5f251.js",
     "static/js/787.c4a2cdae.chunk.js": "/clickcounterappghpages/static/js/787.c4a2cdae.chunk.js",
     "index.html": "/clickcounterappghpages/index.html",
     "main.14f3a2db.css.map": "/clickcounterappghpages/static/css/main.14f3a2db.css.map",
-    "main.bc782dd0.js.map": "/clickcounterappghpages/static/js/main.bc782dd0.js.map",
+    "main.c8c5f251.js.map": "/clickcounterappghpages/static/js/main.c8c5f251.js.map",
     "787.c4a2cdae.chunk.js.map": "/clickcounterappghpages/static/js/787.c4a2cdae.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.14f3a2db.css",
-    "static/js/main.bc782dd0.js"
+    "static/js/main.c8c5f251.js"
   ]
 }
