@@ -50,8 +50,14 @@ function App() {
   }
 
   async function handleClick() {
-    const { data } = await API.graphql(graphqlOperation(createClick, { input: { count: 1, timestamp: new Date().toISOString(), location: userLocation } }));
-    setClicks([...clicks, data.createClick]);
+    if (userLocation)
+    {
+      const { data } = await API.graphql(graphqlOperation(createClick, { input: { count: 1, timestamp: new Date().toISOString(), location: userLocation } }));
+      setClicks([...clicks, data.createClick]);
+    }
+    else {
+      console.log('User location not available yet');
+    }
   }
 
   function getUserLocation() {
