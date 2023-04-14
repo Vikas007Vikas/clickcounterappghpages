@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/clickcounterappghpages/static/css/main.e6c13ad2.css",
-    "main.js": "/clickcounterappghpages/static/js/main.841ec3dc.js",
+    "main.css": "/clickcounterappghpages/static/css/main.14f3a2db.css",
+    "main.js": "/clickcounterappghpages/static/js/main.c4ad4e67.js",
     "static/js/787.c4a2cdae.chunk.js": "/clickcounterappghpages/static/js/787.c4a2cdae.chunk.js",
     "index.html": "/clickcounterappghpages/index.html",
-    "main.e6c13ad2.css.map": "/clickcounterappghpages/static/css/main.e6c13ad2.css.map",
-    "main.841ec3dc.js.map": "/clickcounterappghpages/static/js/main.841ec3dc.js.map",
+    "main.14f3a2db.css.map": "/clickcounterappghpages/static/css/main.14f3a2db.css.map",
+    "main.c4ad4e67.js.map": "/clickcounterappghpages/static/js/main.c4ad4e67.js.map",
     "787.c4a2cdae.chunk.js.map": "/clickcounterappghpages/static/js/787.c4a2cdae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.841ec3dc.js"
+    "static/css/main.14f3a2db.css",
+    "static/js/main.c4ad4e67.js"
   ]
 }
