@@ -2,7 +2,7 @@
   "name": "clickcounterappreact",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Vikas007Vikas.github.io/Lighthall_ClickCounterReactApp",
+  "homepage": "https://Vikas007Vikas.github.io/clickcounterappghpages",
   "dependencies": {
     "@aws-amplify/ui-react": "^4.6.0",
     "@testing-library/jest-dom": "^5.16.5",
