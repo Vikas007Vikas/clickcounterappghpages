@@ -4,8 +4,8 @@ import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
-const listClicks = `query ListClicks {
-  listClicks {
+const listClicks = `query ListClicks($limit: Int!) {
+  listClicks(limit: $limit) {
     items {
       id
       count
@@ -36,12 +36,14 @@ function App() {
   }, []);
 
   async function fetchClicks() {
-    const { data } = await API.graphql(graphqlOperation(listClicks));
+    const limit = 1000;
+    const { data } = await API.graphql(graphqlOperation(listClicks, { limit }));
     const newClicks = data.listClicks.items.map(click => {
       // If location is null, replace it with "Unknown"
       const location = click.location || "Unknown";
       return { ...click, location };
     });
+    console.log(newClicks.count);
     setClicks(newClicks);
     setLoading(false);
   }
@@ -138,10 +140,20 @@ function App() {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'black' }}>
-      <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.3)' }}>
+      <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.3)', textAlign: 'center' }}>
         <h1>Click Counter</h1>
-        <button onClick={handleClick}>Click me</button>
-        <p>Click count: {clicks.reduce((sum, click) => sum + click.count, 0)}</p>
+        <button onClick={handleClick} style={{backgroundColor: '#0077B6', color: 'white', fontSize: '20px', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', transition: 'background-color 0.3s ease'}} 
+        onMouseEnter={e => e.target.style.backgroundColor = '#005691'} 
+        onMouseLeave={e => e.target.style.backgroundColor = '#0077B6'}
+        >
+          Click me
+        </button>
+        <div style={{marginTop: '20px', border: '1px solid #ddd', padding: '3px', borderRadius: '10px', textAlign: 'center'}}>
+          <p>Global Click count: {clicks.reduce((sum, click) => sum + click.count, 0)}</p>
+        </div>
+        {/* {locationCountsArray.map(([userLocation, count])=> (
+          <p>Your location count: {count}</p>
+        ))} */}
         {errorMessage && (
           <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'red', color: 'white', padding: '10px', borderRadius: '5px' }}>
             <p style={{ margin: 0 }}>{errorMessage}</p>

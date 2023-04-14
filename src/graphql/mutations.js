@@ -13,6 +13,9 @@ export const createClick = /* GraphQL */ `
       location
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -28,6 +31,9 @@ export const updateClick = /* GraphQL */ `
       location
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -43,6 +49,9 @@ export const deleteClick = /* GraphQL */ `
       location
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
