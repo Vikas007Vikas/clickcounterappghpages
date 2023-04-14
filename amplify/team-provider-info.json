@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-clickcounterappreact-dev-175642-authRole",
+      "UnauthRoleArn": "arn:aws:iam::889599954908:role/amplify-clickcounterappreact-dev-175642-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::889599954908:role/amplify-clickcounterappreact-dev-175642-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-clickcounterappreact-dev-175642-deployment",
+      "UnauthRoleName": "amplify-clickcounterappreact-dev-175642-unauthRole",
+      "StackName": "amplify-clickcounterappreact-dev-175642",
+      "StackId": "arn:aws:cloudformation:us-east-1:889599954908:stack/amplify-clickcounterappreact-dev-175642/39a55c00-da5f-11ed-a6cb-1283b6787eef",
+      "AmplifyAppId": "d13n4j7rt0scr4"
+    },
+    "categories": {
+      "api": {
+        "Click": {}
+      },
+      "auth": {
+        "clickcounterappreact39005003": {}
+      }
+    }
+  }
+}
