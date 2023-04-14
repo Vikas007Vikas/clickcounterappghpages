@@ -4,10 +4,6 @@ import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
-const opencage = require('opencage-api-client');
-
-//const geocoder = new OpenCageApi({ key: '2000608a387d4ff4970038366c825790' });
-
 const listClicks = `query ListClicks {
   listClicks {
     items {
@@ -55,9 +51,11 @@ function App() {
     {
       const { data } = await API.graphql(graphqlOperation(createClick, { input: { count: 1, timestamp: new Date().toISOString(), location: userLocation } }));
       setClicks([...clicks, data.createClick]);
+      setErrorMessage("");
     }
     else {
       console.log('User location not available yet');
+      setErrorMessage("Location information is unavailable. Please enable location access and try again in few seconds.")
     }
   }
 
@@ -69,9 +67,11 @@ function App() {
           var query = latitude + ',' + longitude;
           var api_url = 'https://api.opencagedata.com/geocode/v1/json'
 
+          var api_key = '2000608a387d4ff4970038366c825790';
+
           var request_url = api_url
             + '?'
-            + 'key=' + '2000608a387d4ff4970038366c825790'
+            + `key=${api_key}`
             + '&q=' + encodeURIComponent(query)
             + '&pretty=1'
             + '&no_annotations=1';
@@ -79,29 +79,26 @@ function App() {
           var request = new XMLHttpRequest();
           request.open('GET', request_url, true);
           
-          var request = new XMLHttpRequest();
+          request = new XMLHttpRequest();
           request.open('GET', request_url, true);
+          console.log("status:", request.status);
 
           request.onload = function() {
             // see full list of possible response codes:
             // https://opencagedata.com/api#codes
-
             if (request.status === 200){
               // Success!
               var data = JSON.parse(request.responseText);
               console.log(data);
               const location = data.results[0].components.city;
               setUserLocation(location);
-              setErrorMessage("");
             } else if (request.status <= 500){
               // We reached our target server, but it returned an error
 
               console.log("unable to geocode! Response code: " + request.status);
-              var data = JSON.parse(request.responseText);
+              data = JSON.parse(request.responseText);
               console.log('error msg: ' + data.status.message);
-              setErrorMessage("Location information is unavailable. Try again in few seconds.")
             } else {
-              setErrorMessage("Location information is unavailable. Try again in few seconds.")
               console.log("server error");
             }
           };
@@ -145,7 +142,12 @@ function App() {
         <h1>Click Counter</h1>
         <button onClick={handleClick}>Click me</button>
         <p>Click count: {clicks.reduce((sum, click) => sum + click.count, 0)}</p>
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        {errorMessage && (
+          <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'red', color: 'white', padding: '10px', borderRadius: '5px' }}>
+            <p style={{ margin: 0 }}>{errorMessage}</p>
+            <button onClick={() => setErrorMessage(null)} style={{ marginLeft: '10px', backgroundColor: 'white', color: 'red', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Close</button>
+          </div>
+        )}
         <h2>Geography Data</h2>
         <table>
           <thead>
