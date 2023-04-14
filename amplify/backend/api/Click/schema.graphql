@@ -6,4 +6,5 @@ type Click @model @aws_api_key {
   id: ID!
   count: Int!
   timestamp: String!
+  location: String
 }

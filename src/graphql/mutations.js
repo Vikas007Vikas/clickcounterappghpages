@@ -10,6 +10,7 @@ export const createClick = /* GraphQL */ `
       id
       count
       timestamp
+      location
       createdAt
       updatedAt
     }
@@ -24,6 +25,7 @@ export const updateClick = /* GraphQL */ `
       id
       count
       timestamp
+      location
       createdAt
       updatedAt
     }
@@ -38,6 +40,7 @@ export const deleteClick = /* GraphQL */ `
       id
       count
       timestamp
+      location
       createdAt
       updatedAt
     }

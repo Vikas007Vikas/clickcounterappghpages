@@ -7,6 +7,7 @@ export const getClick = /* GraphQL */ `
       id
       count
       timestamp
+      location
       createdAt
       updatedAt
     }
@@ -23,6 +24,7 @@ export const listClicks = /* GraphQL */ `
         id
         count
         timestamp
+        location
         createdAt
         updatedAt
       }
