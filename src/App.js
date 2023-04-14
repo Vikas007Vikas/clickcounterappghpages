@@ -32,6 +32,7 @@ function App() {
   const [clicks, setClicks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userLocation, setUserLocation] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchClicks();
@@ -91,13 +92,16 @@ function App() {
               console.log(data);
               const location = data.results[0].components.city;
               setUserLocation(location);
+              setErrorMessage("");
             } else if (request.status <= 500){
               // We reached our target server, but it returned an error
 
               console.log("unable to geocode! Response code: " + request.status);
               var data = JSON.parse(request.responseText);
               console.log('error msg: ' + data.status.message);
+              setErrorMessage("Location information is unavailable. Try again in few seconds.")
             } else {
+              setErrorMessage("Location information is unavailable. Try again in few seconds.")
               console.log("server error");
             }
           };
@@ -141,6 +145,7 @@ function App() {
         <h1>Click Counter</h1>
         <button onClick={handleClick}>Click me</button>
         <p>Click count: {clicks.reduce((sum, click) => sum + click.count, 0)}</p>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <h2>Geography Data</h2>
         <table>
           <thead>
